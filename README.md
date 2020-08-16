@@ -4,4 +4,6 @@
 
 --npm run test
 
+robomongo
+
 

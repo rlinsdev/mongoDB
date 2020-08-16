@@ -10,9 +10,18 @@ before(function(done){
     { useNewUrlParser: true, useUnifiedTopology: true });
 
     mongoose.connection.once('open',function(){
-        console.log('OK');
+        console.log('Conectou com sucesso');
         done();
     }).on('error',function(error){
         console.log('error',error);
     });
 });
+
+
+// Drop the characters collection before each test
+beforeEach(function(done){
+    // drop the collection
+     mongoose.connection.collections.mariochars.drop(function(){
+         done();
+     })
+})
