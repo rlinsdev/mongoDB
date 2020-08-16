@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
 
-//Connection to mongoDB
-//mongodb+srv://gqluser:<password>@cluster0.itrkd.mongodb.net/<dbname>?retryWrites=true&w=majority
+//ES6 promises
+//mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://gqluser:teste**@cluster0.itrkd.mongodb.net/graphiql?retryWrites=true&w=majority',
-{ useNewUrlParser: true, useUnifiedTopology: true });
 
-// element.on('click',function(){
+// Connect to the db before test run
+before(function(done){
+    mongoose.connect('mongodb+srv://gqluser:teste**@cluster0.itrkd.mongodb.net/graphiql?retryWrites=true&w=majority',
+    { useNewUrlParser: true, useUnifiedTopology: true });
 
-// })
-
-mongoose.connection.once('open',function(){
-    console.log('OK');
-}).on('error',function(error){
-    console.log('error',error);
+    mongoose.connection.once('open',function(){
+        console.log('OK');
+        done();
+    }).on('error',function(error){
+        console.log('error',error);
+    });
 });

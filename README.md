@@ -2,3 +2,6 @@
 
 #mocha test
 
+--npm run test
+
+
