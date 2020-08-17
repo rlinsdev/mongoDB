@@ -7,8 +7,8 @@ const mongoose = require('mongoose');
 // Connect to the db before test run
 before(function(done){
     mongoose.connect('mongodb+srv://gqluser:teste**@cluster0.itrkd.mongodb.net/graphiql?retryWrites=true&w=majority',
-    { useNewUrlParser: true, useUnifiedTopology: true });
-
+    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+    
     mongoose.connection.once('open',function(){
         console.log('Conectou com sucesso');
         done();
